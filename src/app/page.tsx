@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { quoteButtonLabel, quoteHref, siteConfig } from "@/lib/site-config";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
+import Faq from "@/components/Faq";
 import ReviewCard from "@/components/ReviewCard";
 import ServiceArea from "@/components/ServiceArea";
 import YoutubeEmbed from "@/components/YoutubeEmbed";
+import { generalFaqs } from "@/lib/faqs";
+import {
+  faqPageLd,
+  jandyTruclearProductLd,
+  truclearVideoLd,
+} from "@/lib/structured-data";
 import {
   jandyReviewSummary,
   jandyTruclearReviews,
@@ -20,6 +28,10 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const heroTrustBullets = [
   "Family Owned & Operated",
@@ -57,6 +69,18 @@ const benefits = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd(generalFaqs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jandyTruclearProductLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(truclearVideoLd) }}
+      />
       {/* HERO */}
       <section className="relative min-h-[calc(100dvh-136px)] overflow-hidden bg-navy">
         <Image
@@ -258,14 +282,30 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-white py-20">
+        <Container>
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+              Salt water pool questions, answered
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-navy/70">
+              The things homeowners ask us most about switching to salt.
+            </p>
+          </div>
+          <div className="mt-10 max-w-3xl">
+            <Faq items={generalFaqs} />
+          </div>
+        </Container>
+      </section>
+
       {/* FINAL CTA */}
       <section className="bg-navy">
         <Container className="grid gap-10 py-16 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-2xl lg:mx-0">
-            {/* TODO: The alt needs to be filled out here */}
             <Image
               src="/assets/images/about/product.jpg"
-              alt=""
+              alt="Jandy TruClear salt chlorination system installed by King of Salt Pools"
               fill
               className="object-cover"
             />

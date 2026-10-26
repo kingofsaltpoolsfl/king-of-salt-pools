@@ -2,17 +2,31 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Container from "@/components/Container";
 import ContactForm from "@/components/ContactForm";
+import { breadcrumbLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Contact Us & Get a Quote",
   description:
     "Tell us about your pool and see your personalized salt water conversion price instantly.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
   return (
-    <section className="bg-sand py-20">
-      <Container>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Contact", path: "/contact" },
+            ]),
+          ),
+        }}
+      />
+      <section className="bg-sand py-20">
+        <Container>
         <div className="max-w-2xl">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-navy">
             It&rsquo;s Time to Enjoy Your Pool
@@ -39,6 +53,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </Container>
-    </section>
+      </section>
+    </>
   );
 }

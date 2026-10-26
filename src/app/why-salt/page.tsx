@@ -3,8 +3,10 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import { quoteButtonLabel, quoteHref } from "@/lib/site-config";
+import { breadcrumbLd, conversionHowToLd } from "@/lib/structured-data";
 import {
   ArrowRight,
+  Check,
   Zap,
   Download,
   Droplet,
@@ -14,12 +16,14 @@ import {
   Smile,
   Sparkles,
   Wrench,
+  X,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Why Salt?",
   description:
     "Discover the benefits of switching to a salt water pool with King of Salt Pools — softer water, fewer chemicals, and simple, reliable equipment we stand behind.",
+  alternates: { canonical: "/why-salt" },
 };
 
 const coreBenefits = [
@@ -81,9 +85,60 @@ const specs = [
   { value: "3 Years", label: "Standard warranty" },
 ];
 
+// Visible steps must mirror conversionHowToLd in structured-data.ts.
+// TODO: confirm the exact process/wording with the client.
+const conversionSteps = [
+  {
+    title: "Get a personalized quote",
+    description:
+      "Tell us about your pool and current equipment and see your conversion price right away — no waiting on a callback.",
+  },
+  {
+    title: "Install the salt system",
+    description:
+      "We install the Jandy TruClear salt chlorinator (controller and cell) on your existing pool equipment.",
+  },
+  {
+    title: "Add pool-grade salt",
+    description:
+      "We add pool-grade salt to the water so the system can generate chlorine automatically from then on.",
+  },
+  {
+    title: "Dial in and balance",
+    description:
+      "We set the chlorine output and confirm your water chemistry is balanced for consistent, automatic sanitation.",
+  },
+];
+
+// Factual, balanced comparison (salt pools cost more up front — stated honestly).
+const saltVsChlorine = [
+  { aspect: "Chlorine source", salt: "Generated automatically from salt", chlorine: "Added by hand (tabs or liquid)" },
+  { aspect: "Water feel", salt: "Softer, silkier", chlorine: "Can feel harsh or drying" },
+  { aspect: "Chemical handling", salt: "Minimal — far less buying and pouring", chlorine: "Frequent buying, storing, dosing" },
+  { aspect: "Eye & skin irritation", salt: "Lower, steadier chlorine — gentler", chlorine: "Dosing spikes can irritate" },
+  { aspect: "Routine maintenance", salt: "Consistent and more hands-off", chlorine: "More testing and guesswork" },
+  { aspect: "Up-front cost", salt: "Higher — you're adding equipment", chlorine: "Lower — no system to install", saltIsPlus: false },
+  { aspect: "Ongoing chemical cost", salt: "Lower over time", chlorine: "Ongoing chlorine purchases" },
+];
+
 export default function WhySaltPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(conversionHowToLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Why Salt?", path: "/why-salt" },
+            ]),
+          ),
+        }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden bg-navy">
         <Image
@@ -99,7 +154,7 @@ export default function WhySaltPage() {
             The Benefits of a Salt Water Pool
           </h1>
           <p className="mt-6 max-w-xl text-base sm:text-lg text-white/75 leading-relaxed">
-            Softer wate, fewer chemicals, and a pool that&rsquo;s simply easier
+            Softer water, fewer chemicals, and a pool that&rsquo;s simply easier
             to own. Here&rsquo;s what changes when you make the switch — and the
             equipment that makes it possible.
           </p>
@@ -251,6 +306,97 @@ export default function WhySaltPage() {
                 Balanced flow ports for consistent output
               </figcaption>
             </figure>
+          </div>
+        </Container>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="bg-sand py-20">
+        <Container>
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+              How the conversion works
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-navy/70">
+              Switching to salt is simpler than most people expect. Here&rsquo;s
+              what it looks like from quote to first swim.
+            </p>
+          </div>
+
+          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {conversionSteps.map((step, i) => (
+              <li
+                key={step.title}
+                className="rounded-xl border border-navy/10 bg-white p-6"
+              >
+                <span className="flex size-10 items-center justify-center rounded-full bg-gold/15 text-base font-extrabold text-gold-dark">
+                  {i + 1}
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-navy">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy/70">
+                  {step.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      {/* SALT VS CHLORINE */}
+      <section className="bg-white py-20">
+        <Container>
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+              Salt water vs. a traditional chlorine pool
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-navy/70">
+              Both keep your pool sanitized with chlorine — the difference is how
+              that chlorine gets there, and what owning the pool feels like.
+            </p>
+          </div>
+
+          <div className="mt-10 overflow-x-auto rounded-2xl border border-navy/10">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead>
+                <tr className="bg-sand text-navy">
+                  <th className="px-5 py-4 font-bold"></th>
+                  <th className="px-5 py-4 font-bold">Salt water pool</th>
+                  <th className="px-5 py-4 font-bold">Traditional chlorine pool</th>
+                </tr>
+              </thead>
+              <tbody>
+                {saltVsChlorine.map((row, i) => (
+                  <tr
+                    key={row.aspect}
+                    className={
+                      i !== saltVsChlorine.length - 1
+                        ? "border-b border-navy/10"
+                        : ""
+                    }
+                  >
+                    <th
+                      scope="row"
+                      className="px-5 py-4 font-semibold text-navy"
+                    >
+                      {row.aspect}
+                    </th>
+                    <td className="px-5 py-4 text-navy/80">
+                      <span className="flex items-start gap-2">
+                        {row.saltIsPlus === false ? (
+                          <X className="size-4 shrink-0 mt-0.5 text-navy/40" />
+                        ) : (
+                          <Check className="size-4 shrink-0 mt-0.5 text-gold-dark" />
+                        )}
+                        {row.salt}
+                      </span>
+                    </td>
+                    <td className="px-5 py-4 text-navy/60">{row.chlorine}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </Container>
       </section>

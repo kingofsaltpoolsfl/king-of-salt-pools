@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import FamilyVideo from "@/components/FamilyVideo";
 import { quoteButtonLabel, quoteHref, siteConfig } from "@/lib/site-config";
+import { breadcrumbLd } from "@/lib/structured-data";
 import {
   ArrowRight,
   Award,
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "A family owned business with 25 years of salt water swimming pool experience, serving the Tampa Bay Area as an authorized Jandy installer.",
+  alternates: { canonical: "/about" },
 };
 
 const credentials = [
@@ -72,6 +74,17 @@ const credentials = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+            ]),
+          ),
+        }}
+      />
       {/* INTRO */}
       <section className="bg-white py-20">
         <Container>

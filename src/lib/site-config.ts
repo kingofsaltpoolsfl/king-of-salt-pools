@@ -1,6 +1,9 @@
 export const siteConfig = {
   name: "King of Salt Pools",
   tagline: "The Royal Way to Sanitize Your Pool",
+  // Canonical origin — single source of truth for metadataBase, canonical URLs,
+  // robots, sitemap and JSON-LD. No trailing slash. Update here if the domain changes.
+  url: "https://kingofsaltpools.com",
   serviceArea: "Tampa Bay Area",
   // Display uses the POOL vanity spelling (7665 on a phone keypad);
   // phoneHref keeps the real digits since tel: links need numbers, not letters.

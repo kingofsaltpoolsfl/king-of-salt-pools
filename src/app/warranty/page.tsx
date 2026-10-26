@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
+import Faq from "@/components/Faq";
 import { siteConfig } from "@/lib/site-config";
+import { warrantyFaqs } from "@/lib/faqs";
+import { breadcrumbLd, faqPageLd } from "@/lib/structured-data";
 import { CircleCheck, Download, X } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Warranty",
   description:
     "Read the full Jandy Limited Warranty covering your new salt water chlorinator system, and download the official warranty document.",
+  alternates: { canonical: "/warranty" },
 };
 
 const jandyWarrantyPdfUrl =
@@ -71,6 +75,21 @@ const notCoveredCauses = [
 export default function WarrantyPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd(warrantyFaqs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Warranty", path: "/warranty" },
+            ]),
+          ),
+        }}
+      />
       {/* INTRO */}
       <section className="bg-white py-20">
         <Container>
@@ -257,6 +276,20 @@ export default function WarrantyPage() {
                 800-822-7933 or productsupport@fluidra.com.
               </li>
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* WARRANTY FAQ */}
+      <section className="bg-sand py-20">
+        <Container>
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+              Warranty questions, answered
+            </h2>
+          </div>
+          <div className="mt-10 max-w-3xl">
+            <Faq items={warrantyFaqs} />
           </div>
         </Container>
       </section>
