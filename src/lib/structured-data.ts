@@ -132,6 +132,18 @@ export const jandyTruclearProductLd = {
   category: "Salt chlorine generator",
   description:
     "Salt water chlorination system for residential pools up to 35,000 gallons, with a 3-year manufacturer warranty. Installed by King of Salt Pools.",
+  // Installed price offered by King of Salt Pools. Mirrors the price shown
+  // visibly on the home page (siteConfig.saltSystemPrice) per Google's rule that
+  // Product offer markup must match an on-page price.
+  offers: {
+    "@type": "Offer",
+    price: String(siteConfig.saltSystemPrice),
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    url: `${siteConfig.url}/contact`,
+    seller: { "@id": BUSINESS_ID },
+  },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: jandyReviewSummary.averageRating,

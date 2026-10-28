@@ -12,6 +12,10 @@ export const siteConfig = {
   email: "kingofsaltpoolsfl@gmail.com",
   hours: "Mon–Fri 8:00 AM – 5:00 PM",
   license: "Lic. #CPC1459279",
+  // Installed price for a salt system conversion, confirmed by the client.
+  // Shown on the home page and used in the Jandy TruClear Offer schema — the two
+  // must stay in sync (Google requires a visible price for Product offer markup).
+  saltSystemPrice: 2599,
 } as const;
 
 export const navLinks = [

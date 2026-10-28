@@ -317,6 +317,14 @@ export default function Home() {
             <p className="mt-4 max-w-xl mx-auto text-white/70 lg:mx-0">
               You already own the pool. Now upgrade the way you enjoy it!
             </p>
+            <p className="mt-6 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 lg:justify-start">
+              <span className="text-4xl font-extrabold text-gold">
+                ${siteConfig.saltSystemPrice.toLocaleString("en-US")}
+              </span>
+              <span className="text-sm text-white/70">
+                installed — includes a 3-year warranty
+              </span>
+            </p>
             <Button href={quoteHref} className="mt-8 px-8 py-3.5">
               {quoteButtonLabel}
               <ArrowRight className="size-4" />
