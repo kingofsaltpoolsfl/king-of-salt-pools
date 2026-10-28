@@ -10,8 +10,7 @@ export const siteConfig = {
   phone: "(855) 520-POOL",
   phoneHref: "tel:+18555207665",
   email: "kingofsaltpoolsfl@gmail.com",
-  // TODO: confirm real business hours with the client.
-  hours: "Mon–Fri 9:00 AM – 5:00 PM",
+  hours: "Mon–Fri 8:00 AM – 5:00 PM",
   license: "Lic. #CPC1459279",
 } as const;
 

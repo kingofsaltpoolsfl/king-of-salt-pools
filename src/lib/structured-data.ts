@@ -39,12 +39,11 @@ export const localBusinessLd = {
     "@type": "City",
     name: city,
   })),
-  // TODO: confirm real business hours with the client (see site-config `hours`).
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
+      opens: "08:00",
       closes: "17:00",
     },
   ],
@@ -52,9 +51,12 @@ export const localBusinessLd = {
     { "@type": "Person", name: "Nick" },
     { "@type": "Person", name: "Fernanda" },
   ],
-  // TODO: add Google Business Profile + social URLs here — strongest local-AEO
-  // signal for entity disambiguation.
-  sameAs: [] as string[],
+  // Social profiles for entity disambiguation (strongest local-AEO signal).
+  // TODO: add the Google Business Profile URL here once it exists.
+  sameAs: [
+    "https://www.facebook.com/share/1BTiYmQgJi/",
+    "https://www.instagram.com/kingofsaltpoolsfl",
+  ],
 };
 
 export const serviceLd = {
