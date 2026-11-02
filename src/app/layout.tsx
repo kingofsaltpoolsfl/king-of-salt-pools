@@ -19,6 +19,11 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  // Renders <meta name="google-site-verification"> only once a token is set in
+  // site-config, so the site can be verified in Google Search Console.
+  ...(siteConfig.googleSiteVerification
+    ? { verification: { google: siteConfig.googleSiteVerification } }
+    : {}),
   title: {
     default: `${siteConfig.name} | Salt Water Pool Conversions in ${siteConfig.serviceArea}`,
     template: `%s | ${siteConfig.name}`,

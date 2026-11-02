@@ -16,6 +16,11 @@ export const siteConfig = {
   // Shown on the home page and used in the Jandy TruClear Offer schema — the two
   // must stay in sync (Google requires a visible price for Product offer markup).
   saltSystemPrice: 2599,
+  // Google Search Console verification token. In GSC, add a URL-prefix property
+  // for https://kingofsaltpools.com, pick the "HTML tag" method, and paste ONLY
+  // the content value here (the string inside content="..."). While empty, no
+  // verification meta tag is rendered.
+  googleSiteVerification: "",
 } as const;
 
 export const navLinks = [
