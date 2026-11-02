@@ -20,7 +20,7 @@ export const siteConfig = {
   // for https://kingofsaltpools.com, pick the "HTML tag" method, and paste ONLY
   // the content value here (the string inside content="..."). While empty, no
   // verification meta tag is rendered.
-  googleSiteVerification: "",
+  googleSiteVerification: "pbR3UKDRgcrTsjuWSi0WBDFWLpnP-OcLbeOuqUDG6FQ",
 } as const;
 
 export const navLinks = [
