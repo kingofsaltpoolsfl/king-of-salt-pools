@@ -24,9 +24,34 @@ export const generalFaqs: Faq[] = [
       "Yes. Converting a traditional chlorine pool to salt water is our core service — we install the salt system on your existing equipment and add pool-grade salt, so you keep your pool and simply upgrade how it's sanitized.",
   },
   {
+    question: "Do I need to drain my pool to convert to salt water?",
+    answer:
+      "No. In most cases we convert your pool using the water it already has — we install the salt chlorinator on your existing equipment and dissolve pool-grade salt into the water, so there's no need to drain and refill.",
+  },
+  {
+    question: "How long does a salt water conversion take?",
+    answer:
+      "Converting is a straightforward upgrade to your existing equipment: we install the salt chlorinator, add pool-grade salt, and dial in the chlorine output. For a timeline on your specific pool and setup, reach out and we'll walk you through it.",
+  },
+  {
     question: "Does salt water damage a pool or its equipment?",
     answer:
       "Salt pools run at low, lake-like salt levels and lower, steadier chlorine than hand-dosed pools, which is gentler on skin, eyes, and swimwear. Keeping the water chemistry balanced protects your surfaces and equipment, and we install professional-grade systems built for the job.",
+  },
+  {
+    question: "How salty is a salt water pool?",
+    answer:
+      "Very lightly salted — roughly a tenth of the salinity of seawater. Most people can barely taste it, and it won't sting your eyes the way a traditional chlorine pool can; it feels closer to soft, natural water than the ocean.",
+  },
+  {
+    question: "Do I still need to add other pool chemicals?",
+    answer:
+      "The salt system generates chlorine for you automatically, so there's far less chemical handling. You'll still keep an eye on the basics — pH, alkalinity, and stabilizer — to keep the water balanced, just with a lot less buying, measuring, and pouring than a hand-dosed pool.",
+  },
+  {
+    question: "How often do I need to add salt?",
+    answer:
+      "Not often. The salt is recycled continuously as it generates chlorine rather than being used up, so you typically only top it up when water is lost to splash-out, backwashing, or heavy rain overflow — not through normal swimming or evaporation.",
   },
   {
     question: "How much does a salt water pool conversion cost?",

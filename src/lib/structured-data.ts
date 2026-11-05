@@ -13,6 +13,13 @@ import {
 const BUSINESS_ID = `${siteConfig.url}/#business`;
 const telephone = siteConfig.phoneHref.replace("tel:", "");
 
+// Area served: the Tampa Bay Area region plus the specific cities we cover.
+// Shared by LocalBusiness and Service so the stated region stays consistent.
+const areaServed = [
+  { "@type": "AdministrativeArea", name: "Tampa Bay Area" },
+  ...serviceAreaCities.map((city) => ({ "@type": "City", name: city })),
+];
+
 export const localBusinessLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -27,6 +34,12 @@ export const localBusinessLd = {
   email: siteConfig.email,
   slogan: siteConfig.tagline,
   priceRange: "$$",
+  knowsAbout: [
+    "Salt water pool conversion",
+    "Salt chlorination systems",
+    "Jandy TruClear salt systems",
+    "Pool sanitation",
+  ],
   // Service-area business: region/country are known; street address is omitted
   // until a physical location is confirmed. TODO: add streetAddress/postalCode
   // (and addressLocality if there's a storefront) once confirmed with the client.
@@ -35,10 +48,7 @@ export const localBusinessLd = {
     addressRegion: "FL",
     addressCountry: "US",
   },
-  areaServed: serviceAreaCities.map((city) => ({
-    "@type": "City",
-    name: city,
-  })),
+  areaServed,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -65,7 +75,7 @@ export const serviceLd = {
   name: "Salt Water Pool Conversion",
   serviceType: "Salt water pool conversion and salt chlorination system installation",
   provider: { "@id": BUSINESS_ID },
-  areaServed: serviceAreaCities.map((city) => ({ "@type": "City", name: city })),
+  areaServed,
   description:
     "Converting residential chlorine pools to salt water and installing Jandy TruClear salt chlorination systems, with a 3-year manufacturer warranty.",
   url: `${siteConfig.url}/why-salt`,
