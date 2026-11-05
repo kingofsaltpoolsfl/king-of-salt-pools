@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import FamilyVideo from "@/components/FamilyVideo";
@@ -39,9 +40,9 @@ const familyMembers = [
 ];
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Our Tampa Bay Salt Pool Company",
   description:
-    "A family owned business with 25 years of salt water swimming pool experience, serving the Tampa Bay Area as an authorized Jandy installer.",
+    "King of Salt Pools is a family-owned business with 25 years of salt water pool experience, serving the Tampa Bay Area as a licensed, authorized Jandy installer.",
   alternates: { canonical: "/about" },
 };
 
@@ -104,9 +105,16 @@ export default function AboutPage() {
               <p className="mt-4 text-base leading-relaxed text-navy/70">
                 We&rsquo;re a family owned business with 25 years of salt water
                 swimming pool experience. That experience is why we&rsquo;ve
-                chosen to install the Jandy TruClear® Salt System — the best
-                salt chlorinator on the market today, based on dependability,
-                easy maintenance, and the warranty offered by the manufacturer.
+                chosen to install the{" "}
+                <Link
+                  href="/why-salt"
+                  className="font-semibold text-gold-dark underline decoration-gold/50 underline-offset-2 hover:text-navy transition-colors"
+                >
+                  Jandy TruClear® Salt System
+                </Link>{" "}
+                — the best salt chlorinator on the market today, based on
+                dependability, easy maintenance, and the warranty offered by the
+                manufacturer.
                 We&rsquo;re a licensed, insured, authorized Jandy installer, and
                 every new system we install includes a 3-year warranty.
               </p>

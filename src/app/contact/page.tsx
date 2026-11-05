@@ -5,9 +5,9 @@ import ContactForm from "@/components/ContactForm";
 import { breadcrumbLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Get a Quote",
+  title: "Get a Salt Water Pool Conversion Quote",
   description:
-    "Tell us about your pool and see your personalized salt water conversion price instantly.",
+    "Tell us about your pool and see your personalized salt water pool conversion price instantly — serving the Tampa Bay Area.",
   alternates: { canonical: "/contact" },
 };
 

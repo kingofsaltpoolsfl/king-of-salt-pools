@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
-import { quoteButtonLabel, quoteHref } from "@/lib/site-config";
+import Link from "next/link";
+import { quoteButtonLabel, quoteHref, siteConfig } from "@/lib/site-config";
 import { breadcrumbLd, conversionHowToLd } from "@/lib/structured-data";
 import {
   ArrowRight,
@@ -20,9 +21,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Why Salt?",
+  title: "Salt Water Pool Benefits & Chlorine Comparison",
   description:
-    "Discover the benefits of switching to a salt water pool with King of Salt Pools — softer water, fewer chemicals, and simple, reliable equipment we stand behind.",
+    "See the benefits of a salt water pool in the Tampa Bay Area — softer water, fewer chemicals, how the conversion works, and salt water vs. chlorine compared.",
   alternates: { canonical: "/why-salt" },
 };
 
@@ -155,8 +156,9 @@ export default function WhySaltPage() {
           </h1>
           <p className="mt-6 max-w-xl text-base sm:text-lg text-white/75 leading-relaxed">
             Softer water, fewer chemicals, and a pool that&rsquo;s simply easier
-            to own. Here&rsquo;s what changes when you make the switch — and the
-            equipment that makes it possible.
+            to own — right here in the {siteConfig.serviceArea}. Here&rsquo;s
+            what changes when you make the switch, and the equipment that makes
+            it possible.
           </p>
           <Button href={quoteHref} className="mt-8 px-7 py-3.5">
             {quoteButtonLabel}
@@ -213,7 +215,14 @@ export default function WhySaltPage() {
             <p className="mt-4 text-sm leading-relaxed text-navy/70">
               We only install trusted, professional-grade salt systems (Jandy
               TruClear®) — built to be reliable and easy to live with, backed by
-              a manufacturer warranty and our own workmanship.
+              a{" "}
+              <Link
+                href="/warranty"
+                className="font-semibold text-gold-dark underline decoration-gold/50 underline-offset-2 hover:text-navy transition-colors"
+              >
+                3-year manufacturer warranty
+              </Link>{" "}
+              and our own workmanship.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4">

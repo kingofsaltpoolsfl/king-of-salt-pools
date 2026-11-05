@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Faq from "@/components/Faq";
@@ -8,9 +9,9 @@ import { breadcrumbLd, faqPageLd } from "@/lib/structured-data";
 import { CircleCheck, Download, X } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Warranty",
+  title: "Jandy TruClear Salt System Warranty (3-Year)",
   description:
-    "Read the full Jandy Limited Warranty covering your new salt water chlorinator system, and download the official warranty document.",
+    "Your new Jandy TruClear salt chlorinator is covered by a 3-year manufacturer warranty. See what's covered, the full Jandy Limited Warranty, and how to file a claim.",
   alternates: { canonical: "/warranty" },
 };
 
@@ -102,10 +103,15 @@ export default function WarrantyPage() {
               (&ldquo;Fluidra&rdquo;), warrants all Jandy® branded products to
               be free from manufacturing defects in materials and workmanship
               for a period of one (1) year from the date of retail purchase,
-              with the exceptions listed below. The complete salt water
-              chlorinator system we install &mdash; controller and cell
-              purchased and installed together &mdash; is covered for three (3)
-              years.
+              with the exceptions listed below. The complete{" "}
+              <Link
+                href="/why-salt"
+                className="font-semibold text-gold-dark underline decoration-gold/50 underline-offset-2 hover:text-navy transition-colors"
+              >
+                salt water chlorinator system we install
+              </Link>{" "}
+              &mdash; controller and cell purchased and installed together
+              &mdash; is covered for three (3) years.
             </p>
             <Button
               href={jandyWarrantyPdfUrl}
